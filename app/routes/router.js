@@ -13,7 +13,7 @@ var db = mongoose.connection
 db.createCollection('gitData');
 	var dataSaved = db.collection('gitDaata');
 
-router.post('/postData',function(request,response){
+router.post('/github',function(request,response){
     axios.get('https://api.github.com/users/mralexgray/repos')
   .then(URLdata => {
      const str = CircularJSON.stringify(URLdata);
@@ -34,7 +34,7 @@ router.post('/postData',function(request,response){
   });
     
 })
-router.get('/getData',function(request,response){
+router.get('/github',function(request,response){
     var id=request.query.id
    var dataById= dataSaved.find({"id":id})
    response.send({
